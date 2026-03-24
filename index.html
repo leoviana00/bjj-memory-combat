@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Método Z - Memory Combat</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="instructions-modal" class="modal-overlay">
+        <div class="modal-content">
+            <h2>🥋 MÉTODO Z: MEMORY COMBAT</h2>
+            <p>Una a lógica à técnica do Jiu-Jitsu. Teste sua memória e seu conhecimento!</p>
+            <ul class="instrucoes-lista">
+                <li>🎯 <strong>Objetivo:</strong> Encontre os pares e identifique o nome da posição.</li>
+                <li>🔋 <strong>Gás (Stamina):</strong> Acertos recuperam 8%, erros (no par ou no nome) custam 15%.</li>
+                <li>🏅 <strong>Graduação:</strong> Acerte o Quiz para subir da Branca à Preta.</li>
+                <li>⚠️ <strong>Finalização:</strong> Se o gás acabar, você "bateu"!</li>
+            </ul>
+            <button class="start-btn" onclick="startGame()">ENTRAR NO TATAME (OSS!)</button>
+        </div>
+    </div>
+
+    <div id="quiz-overlay" class="modal-overlay" style="display: none;">
+        <div class="modal-content quiz-box">
+            <h3>QUAL É ESTA POSIÇÃO?</h3>
+            <div id="quiz-options" class="options-container">
+                </div>
+        </div>
+    </div>
+
+    <div id="damage-overlay"></div>
+
+    <h1>MÉTODO Z - MEMORY COMBAT</h1>
+
+    <div class="status-bar">
+        <div class="stamina-container">
+            <span>GAS:</span>
+            <div class="stamina-outer">
+                <div id="stamina-inner"></div>
+            </div>
+        </div>
+        <div class="rank-container">
+            RANK: <span id="rank">FAIXA BRANCA</span>
+        </div>
+    </div>
+
+    <div class="game-container" id="game-board"></div>
+
+    <button class="reset-btn" onclick="resetGame()">REINICIAR TREINO</button>
+
+    <audio id="snd-match" src="sounds/match.mp3" preload="auto"></audio>
+    <audio id="snd-error" src="sounds/error.mp3" preload="auto"></audio>
+    <audio id="snd-gameover" src="sounds/gameover.mp3" preload="auto"></audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
