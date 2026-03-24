@@ -2,7 +2,7 @@ name: Deploy Método Z to GitHub Pages
 
 on:
   push:
-    branches: ["main"] # Executa o deploy sempre que houver push na main
+    branches: ["main"]
 
 permissions:
   contents: read
@@ -25,7 +25,6 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Faz o upload de todos os arquivos da raiz (index, style, script, assets, sounds)
           path: '.'
 
       - name: Deploy to GitHub Pages
