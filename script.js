@@ -14,11 +14,8 @@ function startGame() {
 }
 
 function playSound(id) {
-    const sound = document.getElementById(id);
-    if (sound) {
-        sound.currentTime = 0;
-        sound.play().catch(() => console.log("Áudio aguardando clique."));
-    }
+    const s = document.getElementById(id);
+    if (s) { s.currentTime = 0; s.play().catch(() => {}); }
 }
 
 function createBoard() {
@@ -31,8 +28,9 @@ function createBoard() {
         card.dataset.name = pos;
         card.innerHTML = `
             <div class="back">?</div>
-            <div class="front"><img src="assets/${pos}.jpg" class="card-img" onerror="this.src='https://via.placeholder.com/150?text=OSS'"></div>
-        `;
+            <div class="front">
+                <img src="assets/${pos}.jpg" class="card-img" onerror="this.src='https://via.placeholder.com/150?text=BJJ'">
+            </div>`;
         card.addEventListener('click', flipCard);
         board.appendChild(card);
     });
@@ -47,85 +45,75 @@ function flipCard() {
 }
 
 function checkMatch() {
-    const [card1, card2] = flippedCards;
-    if (card1.dataset.name === card2.dataset.name) {
-        showQuiz(card1.dataset.name);
+    const [c1, c2] = flippedCards;
+    if (c1.dataset.name === c2.dataset.name) {
+        showQuiz(c1.dataset.name);
     } else {
         stamina -= 15;
         playSound('snd-error');
-        setTimeout(() => {
-            card1.classList.remove('flip');
-            card2.classList.remove('flip');
-            flippedCards = [];
+        setTimeout(() => { 
+            c1.classList.remove('flip'); 
+            c2.classList.remove('flip'); 
+            flippedCards = []; 
         }, 700);
     }
     updateUI();
 }
 
-function showQuiz(correctName) {
+function showQuiz(correct) {
     const overlay = document.getElementById('quiz-overlay');
     const container = document.getElementById('quiz-options');
     overlay.style.display = 'flex';
     container.innerHTML = '';
 
-    // Lógica de Distratores (Opções erradas)
-    let options = [correctName];
-    let others = positions.filter(p => p !== correctName).sort(() => 0.5 - Math.random());
-    options.push(others[0], others[1]);
-    options.sort(() => 0.5 - Math.random());
+    let opts = [correct, ...positions.filter(p => p !== correct)
+        .sort(() => 0.5 - Math.random()).slice(0, 2)]
+        .sort(() => 0.5 - Math.random());
 
-    options.forEach(opt => {
-        const btn = document.createElement('button');
-        btn.classList.add('quiz-btn');
-        btn.innerText = opt.toUpperCase();
-        btn.onclick = () => validateQuiz(opt, correctName);
-        container.appendChild(btn);
+    opts.forEach(opt => {
+        const b = document.createElement('button');
+        b.classList.add('quiz-btn');
+        b.innerText = opt.toUpperCase();
+        b.onclick = () => {
+            overlay.style.display = 'none';
+            if (opt === correct) {
+                matchedCount++; 
+                stamina = Math.min(stamina + 8, 100);
+                playSound('snd-match'); 
+                flippedCards = []; 
+                updateRank();
+                if (matchedCount === positions.length) alert("VITÓRIA POR FINALIZAÇÃO! OSS!");
+            } else {
+                stamina -= 15; 
+                playSound('snd-error');
+                setTimeout(() => { 
+                    flippedCards.forEach(c => c.classList.remove('flip')); 
+                    flippedCards = []; 
+                }, 500);
+            }
+            updateUI();
+        };
+        container.appendChild(b);
     });
 }
 
-function validateQuiz(selected, correct) {
-    const overlay = document.getElementById('quiz-overlay');
-    const [card1, card2] = flippedCards;
-
-    if (selected === correct) {
-        matchedCount++;
-        stamina = Math.min(stamina + 8, 100);
-        playSound('snd-match');
-        overlay.style.display = 'none';
-        flippedCards = [];
-        updateRank();
-        if (matchedCount === positions.length) alert("VITÓRIA POR FINALIZAÇÃO! OSS!");
-    } else {
-        stamina -= 15;
-        playSound('snd-error');
-        overlay.style.display = 'none';
-        setTimeout(() => {
-            card1.classList.remove('flip');
-            card2.classList.remove('flip');
-            flippedCards = [];
-        }, 500);
-    }
-    updateUI();
-}
-
 function updateUI() {
-    const inner = document.getElementById('stamina-inner');
-    inner.style.width = stamina + "%";
+    document.getElementById('stamina-inner').style.width = stamina + "%";
     document.getElementById('damage-overlay').className = stamina < 30 ? 'critical-stamina' : '';
-    if (stamina <= 0) {
-        playSound('snd-gameover');
-        alert("BATEU! O gás acabou e você foi finalizado.");
-        resetGame();
+    if (stamina <= 0) { 
+        playSound('snd-gameover'); 
+        alert("BATEU! O gás acabou e você foi finalizado."); 
+        resetGame(); 
     }
 }
 
 function updateRank() {
     const ranks = ["FAIXA BRANCA", "FAIXA AZUL", "FAIXA ROXA", "FAIXA MARROM", "FAIXA PRETA"];
     const colors = ["#ffffff", "#3498db", "#9b59b6", "#8b4513", "#e74c3c"];
-    const index = Math.min(Math.floor(matchedCount / 1.7), 4);
+    const idx = Math.min(Math.floor(matchedCount / 1.7), 4);
     const el = document.getElementById('rank');
-    el.innerText = ranks[index];
-    el.style.color = colors[index];
+    el.innerText = ranks[idx];
+    el.style.color = colors[idx];
 }
 
 function resetGame() {

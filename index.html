@@ -4,19 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Método Z - Memory Combat</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <div id="instructions-modal" class="modal-overlay">
         <div class="modal-content">
-            <h2>🥋 MÉTODO Z: MEMORY COMBAT</h2>
-            <p>Una a lógica à técnica do Jiu-Jitsu. Teste sua memória e seu conhecimento!</p>
+            <h2 class="pixel-title">MÉTODO Z<br>MEMORY COMBAT</h2>
             <ul class="instrucoes-lista">
-                <li>🎯 <strong>Objetivo:</strong> Encontre os pares e identifique o nome da posição.</li>
-                <li>🔋 <strong>Gás (Stamina):</strong> Acertos recuperam 8%, erros (no par ou no nome) custam 15%.</li>
-                <li>🏅 <strong>Graduação:</strong> Acerte o Quiz para subir da Branca à Preta.</li>
-                <li>⚠️ <strong>Finalização:</strong> Se o gás acabar, você "bateu"!</li>
+                <li>🎯 <strong>MISSÃO:</strong> Encontre os pares de posições do Método Z.</li>
+                <li>🧠 <strong>QUIZ:</strong> Ao achar o par, identifique o nome correto.</li>
+                <li>🔋 <strong>GAS:</strong> Acertos recuperam 8%. Erros custam 15%.</li>
+                <li>🏅 <strong>RANK:</strong> Acerte para subir da Branca à Preta.</li>
             </ul>
             <button class="start-btn" onclick="startGame()">ENTRAR NO TATAME (OSS!)</button>
         </div>
@@ -24,15 +26,14 @@
 
     <div id="quiz-overlay" class="modal-overlay" style="display: none;">
         <div class="modal-content quiz-box">
-            <h3>QUAL É ESTA POSIÇÃO?</h3>
-            <div id="quiz-options" class="options-container">
-                </div>
+            <h3 class="quiz-title">QUAL É ESTA POSIÇÃO?</h3>
+            <div id="quiz-options" class="options-container"></div>
         </div>
     </div>
 
     <div id="damage-overlay"></div>
 
-    <h1>MÉTODO Z - MEMORY COMBAT</h1>
+    <h1 class="main-title">MÉTODO Z - MEMORY COMBAT</h1>
 
     <div class="status-bar">
         <div class="stamina-container">
