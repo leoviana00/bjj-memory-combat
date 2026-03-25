@@ -1,56 +1,45 @@
 # 🥋 Método Z - Memory Combat
 
-![Status do Projeto](https://img.shields.io/badge/Status-Finalizado-success)
-![Linguagem](https://img.shields.io/badge/JavaScript-ES6+-yellow)
-![Tema](https://img.shields.io/badge/Tema-Jiu--Jitsu-blue)
-
-O **Método Z - Memory Combat** é um jogo interativo que une o aprendizado técnico do Jiu-Jitsu ao desenvolvimento de software. Diferente de um jogo da memória comum, este projeto utiliza a metodologia oficial do tatame para criar um desafio de memorização e reflexo.
+**Memory Combat** é uma plataforma interativa de treinamento cognitivo voltada para praticantes de Jiu-Jitsu. O projeto utiliza a metodologia e o acervo visual do **Mestre Arthur Fernando (@arthurfernandojj)** para auxiliar na memorização de nomenclaturas e mecânicas de posições reais.
 
 ---
 
-## 🎯 O Diferencial: Metodologia Real
+## 🎮 O Jogo
 
-Este projeto foi construído utilizando material técnico exclusivo:
-* **Fotos Autênticas:** Todas as cartas utilizam imagens reais do meu professor executando as técnicas com uma aluna, garantindo que o aprendizado visual seja fiel ao ensinado na academia.
-* **Reforço Técnico:** O jogo serve como ferramenta de estudo para novos alunos memorizarem a nomenclatura oficial do **Método Z**.
+O desafio vai além de um simples jogo da memória. Para vencer, o "lutador" precisa de técnica e condicionamento mental:
 
----
-
-## 🎮 Como Jogar
-
-O jogo funciona como um "rola" real. Você precisa de estratégia e conhecimento técnico para não ser finalizado!
-
-1.  **O Tabuleiro:** Encontre os pares das posições espalhadas pelo tatame virtual.
-2.  **O Quiz (Desafio Técnico):** Ao encontrar um par, um **Quiz Interativo** aparecerá. Você deve selecionar o nome correto da posição entre 3 opções.
-    * **Acerto:** Você ganha **+8% de GAS** e as cartas permanecem abertas.
-    * **Erro:** Você perde **-15% de GAS** e as cartas se fecham novamente.
-3.  **Mecânica de Stamina (Gás):** Você começa com 100%. Se o gás acabar antes de completar o tabuleiro, você "bateu" e o treino reinicia.
-4.  **Sistema de Graduação:** Sua faixa muda em tempo real conforme seu desempenho:
-    * Branca ➔ Azul ➔ Roxa ➔ Marrom ➔ Preta.
+* **Sistema de Stamina (Gás):** Cada erro consome sua energia, enquanto acertos precisos ajudam na recuperação. Se o gás acabar, você "bate" (Game Over).
+* **Quiz de Validação:** Encontrar o par é apenas metade do caminho. Você deve identificar corretamente o nome da posição para computar os pontos.
+* **Graduação em Tempo Real:** Sua performance dita sua faixa. Comece como faixa branca e tente chegar à faixa preta através da constância no tatame virtual.
 
 ---
 
-## 🛠️ Tecnologias Utilizadas
+## 🛠️ Stack Técnica & DevOps
 
-Focado em performance e manipulação limpa do DOM (**Vanilla Web**):
+Como um projeto desenvolvido por um **DevOps Specialist**, a infraestrutura preza pela automação e boas práticas:
 
-* **HTML5:** Estrutura e gerenciamento de áudio multissensorial.
-* **CSS3:** Animações 3D (*card flip*), efeitos de "sufoco" (tela pulsando em vermelho) e design responsivo.
-* **JavaScript (ES6):** Lógica de estados, algoritmo de embaralhamento e sistema de quiz dinâmico.
+* **Frontend:** HTML5, CSS3 (Custom Properties & Grid Layout) e JavaScript Vanilla (ES6+).
+* **CI/CD Pipeline:** Implementado via **GitHub Actions** para automação de deploy.
+* **Hosting:** Publicação automatizada no **GitHub Pages**.
+* **Versionamento:** Seguindo padrões de organização para facilitar futuras integrações com APIs (ex: BJJ Manager API).
 
 ---
 
-## 🚀 Como rodar o projeto localmente
+## 🚀 Como Executar
 
-1.  Clone este repositório:
-    ```bash
-    git clone [https://github.com/SEU-USUARIO/metodo-z-memory-combat.git](https://github.com/SEU-USUARIO/metodo-z-memory-combat.git)
-    ```
-2.  Certifique-se de que a estrutura de pastas está correta:
-    * `/assets` -> Imagens reais das posições (.jpg).
-    * `/sounds` -> Efeitos sonoros (match.mp3, error.mp3, gameover.mp3).
-3.  Abra o arquivo `index.html` em seu navegador.
+O projeto está disponível online e pode ser acessado diretamente pelo navegador:
 
-## 👨‍💻 Autor
+👉 **[PLAY GAME](https://leoviana00.github.io/bjj-memory-combat/)**
 
-Projeto idealizado e desenvolvido por Leonardo Viana
+---
+
+## 🤝 Créditos e Referências
+
+* **Idealização e Desenvolvimento:** [Leonardo Viana](https://www.instagram.com/leonardoviana.devops/)
+* **Conteúdo Técnico e Imagens:** [Mestre Arthur Fernando - Método Z](https://www.instagram.com/arthurfernandojj/)
+
+---
+
+## 📜 Licença
+
+Este projeto é de caráter educacional e técnico. As imagens e marcas do **Método Z** são de propriedade exclusiva do Mestre Arthur Fernando.
